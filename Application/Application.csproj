@@ -7,9 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interface\" />
-    <Folder Include="Validator\" />
-    <Folder Include="Service\" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationDTO\ApplicationDTO.csproj" />
+    <ProjectReference Include="..\Damin\Domain.csproj" />
   </ItemGroup>
 
 </Project>
