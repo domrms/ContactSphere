@@ -1,4 +1,4 @@
-﻿namespace Core.Interface.Repository
+﻿namespace Core.Interface
 {
     public interface IRepositoryBase<in TEntity> where TEntity : class
     {
