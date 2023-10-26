@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Adapter.Interfaces;
+using ApplicationDTO.ResponseDTO;
+using Domain.Models;
+using System.Net;
 
 namespace Adapter.Map
 {
-    internal class MapperUsuario
+    public class MapperUsuario : IMapperUsuario
     {
+        public ResponseUsuarioDTO MapperToDTO(HttpStatusCode codRetorno, string mensagem, UserToken usuarioToken = null)
+        {
+            return new ResponseUsuarioDTO
+            {
+                codRetorno = codRetorno,
+                mensagem = mensagem,
+                usuarioToken = usuarioToken
+            };
+        }
     }
 }

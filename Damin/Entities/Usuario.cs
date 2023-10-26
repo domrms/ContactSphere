@@ -1,16 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
-    public class Usuario
+    public class Usuarios
     {
         [Key]
-        public long Id { get; private set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
         [Required, MaxLength(100)]
-        public string Username { get; private set; }
+        public string Nome { get; set; }
         [Required, MaxLength(100)]
-        public string Senha { get; private set; }
+        public string Email { get; set; }
+        [Required, MaxLength(100)]
+        public string Senha { get; set; }
         [Required, MaxLength(3)]
-        public string Role { get; private set; }
+        public string Role { get; set; }
     }
 }

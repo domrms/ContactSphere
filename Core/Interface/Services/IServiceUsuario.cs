@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Entities;
+using Domain.Models;
 
 namespace Core.Interface.Services
 {
-    internal interface IServiceUsuario
+    public interface IServiceUsuario : IServiceBase<Usuarios>
     {
+        UserToken InserirUsuario(string nome, string email, string senha, string role);
     }
 }

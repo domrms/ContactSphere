@@ -1,6 +1,7 @@
 ﻿using Application.Interface;
 using ApplicationDTO.RequestDTO;
-using Domain.Models;
+using ApplicationDTO.ResponseDTO;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContactSphere_API.Controllers
@@ -15,11 +16,12 @@ namespace ContactSphere_API.Controllers
             _applicationUsuario = applicationUsuario;
         }
 
+        [AllowAnonymous]
         [HttpPost]
-        [Route("/Usuario")]
-        public async Task<ActionResult<UserToken>> Incluir(RequestUsuarioDTO request)
+        [Route("/Incluir")]
+        public ResponseUsuarioDTO Incluir(RequestUsuarioDTO request)
         {
-            var retorno = _applicationUsuario.IncluirUsuario(request);
+            var retorno = _applicationUsuario.Cadastro(request);
             HttpContext.Response.StatusCode = (int)retorno.codRetorno;
             return retorno;
         }

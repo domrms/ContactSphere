@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain.Models;
 
 namespace ApplicationDTO.ResponseDTO
 {
-    internal class ResponseUsuarioDTO
+    public class ResponseUsuarioDTO : ResponseBaseDTO
     {
+        public UserToken usuarioToken { get; set; }
     }
 }

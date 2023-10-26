@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ApplicationDTO.ResponseDTO;
+using Domain.Models;
+using System.Net;
 
 namespace Adapter.Interfaces
 {
-    internal interface IMapperUsuario
+    public interface IMapperUsuario
     {
+        ResponseUsuarioDTO MapperToDTO(HttpStatusCode codRetorno, string mensagem, UserToken usuarioToken = null);
     }
 }

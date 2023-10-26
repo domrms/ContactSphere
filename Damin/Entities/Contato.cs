@@ -6,14 +6,15 @@ namespace Domain.Entities
     public class Contato
     {
         [Key]
-        public long Id { get; private set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long Id { get; set; }
         [Required, MaxLength(100)]
-        public string Nome { get; private set; }
+        public string Nome { get; set; }
         [Required, MaxLength(100)]
-        public string Email { get; private set; }
+        public string Email { get; set; }
         [Required]
-        public bool Status { get; private set; }
-        [Required, ForeignKey(nameof(Usuario))]
-        public long FkIdUsuario { get; private set; }
+        public bool Status { get; set; }
+        [Required, ForeignKey(nameof(Usuarios))]
+        public long FkIdUsuario { get; set; }
     }
 }

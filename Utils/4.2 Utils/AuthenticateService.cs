@@ -1,13 +1,15 @@
 ﻿using Data;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Utils._4._1_Interface;
 
 namespace Utils
 {
-    public class AuthenticateService
+    public class AuthenticateService : IAuthenticateService
     {
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
@@ -16,12 +18,30 @@ namespace Utils
             _context = context;
             _configuration = configuration;
         }
+        public bool AutenticacaoAsync(string email, string senha)
+        {
+            var usuario = _context.Usuarios.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefaultAsync();
+            if (usuario == null) return false;
+            var autenticacao =  _context.Usuarios.Where(x => x.Senha.ToLower() == senha.ToLower()).FirstOrDefaultAsync();
+            if (autenticacao == null) return false;
 
-        public string GenerateToken(int id, string role)
+            return true;
+        }
+
+        public bool UsuarioExiste(string email)
+        {
+            var usuario =  _context.Usuarios.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefaultAsync();
+            if (usuario == null) return false;
+
+            return true;
+        }
+
+
+        public string GenerateToken(string email, string role)
         {
             var claims = new[]
             {
-                new Claim("id", id.ToString()),
+                new Claim("email", email),
                 new Claim("role", role),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };

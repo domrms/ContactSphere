@@ -2,9 +2,9 @@
 {
     public class RequestUsuarioDTO
     {
-        public long Id { get; private set; }
-        public string Username { get; private set; }
-        public string Senha { get; private set; }
-        public string Role { get; private set; }
+        public string Nome { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
+        public string Role { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-﻿using Core.Interface.Repository;
+﻿using Core.Interface;
 using Data;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,11 +1,10 @@
 ﻿using ApplicationDTO.RequestDTO;
-using Domain.Models;
-using Microsoft.AspNetCore.Mvc;
+using ApplicationDTO.ResponseDTO;
 
 namespace Application.Interface
 {
     public interface IApplicationUsuario
     {
-        Task<ActionResult<UserToken>> Incluir(RequestUsuarioDTO request);
+        ResponseUsuarioDTO Cadastro(RequestUsuarioDTO request);
     }
 }

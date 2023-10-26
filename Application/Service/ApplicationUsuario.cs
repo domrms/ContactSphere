@@ -1,7 +1,9 @@
-﻿using Application.Interface;
+﻿using Adapter.Interfaces;
+using Application.Interface;
 using ApplicationDTO.RequestDTO;
+using ApplicationDTO.ResponseDTO;
+using Core.Interface.Services;
 using Domain.Models;
-using Microsoft.AspNetCore.Mvc;
 using System.Net;
 
 namespace Application.Service
@@ -20,16 +22,16 @@ namespace Application.Service
             _serviceUsuario = serviceUsuario;
         }
 
-        public async Task<ActionResult<UserToken>> Incluir(RequestUsuarioDTO request)
+        public ResponseUsuarioDTO Cadastro(RequestUsuarioDTO usuarioDto)
         {
-            string mensagem = _validacaoUsuario.ValidaDadosUsuario(obj);
-            if (!mensagem.Equals(string.Empty))
+            string mensagem = _validacaoUsuario.ValidaDadosUsuarioAsync(usuarioDto);
+            if (!string.IsNullOrEmpty(mensagem))
                 return _mapperUsuario.MapperToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
             try
             {
-                List<vsUsuario> lista = _serviceUsuario.BuscarUsuario(obj.idRequisicao).ToList();
-                if (lista.Count() > 0)
-                    return _mapperUsuario.MapperToDTO(HttpStatusCode.OK, mensagem, lista);
+                UserToken userToken = _serviceUsuario.InserirUsuario(usuarioDto.Nome ,usuarioDto.Email, usuarioDto.Senha, usuarioDto.Role);
+                if (userToken !=  null)
+                    return _mapperUsuario.MapperToDTO(HttpStatusCode.OK, mensagem, userToken);
                 else
                     return _mapperUsuario.MapperToDTO(HttpStatusCode.NotFound, semDados);
             }

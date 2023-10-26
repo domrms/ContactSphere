@@ -1,4 +1,7 @@
-﻿namespace Services.Services
+﻿using Core.Interface;
+using Core.Interface.Services;
+
+namespace Services.Services
 {
     public abstract class ServiceBase<TEntity> : IDisposable, IServiceBase<TEntity> where TEntity : class
     {
