@@ -8,12 +8,16 @@ namespace Domain.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
+
         [Required, MaxLength(100)]
         public string Nome { get; set; }
+
         [Required, MaxLength(100)]
         public string Email { get; set; }
+
         [Required, MaxLength(100)]
         public string Senha { get; set; }
+
         [Required, MaxLength(3)]
         public string Role { get; set; }
     }

@@ -1,6 +1,7 @@
 ﻿using Autofac.Extensions.DependencyInjection;
 
-namespace ContactSphere_API {
+namespace ContactSphere_API
+{
     public static class Program
     {
         public static void Main(string[] args)
@@ -17,4 +18,3 @@ namespace ContactSphere_API {
                 });
     }
 }
-   

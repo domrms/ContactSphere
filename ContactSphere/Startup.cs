@@ -73,6 +73,7 @@ namespace ContactSphere_API
                 c.SupportNonNullableReferenceTypes();
             });
         }
+
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -103,10 +104,12 @@ namespace ContactSphere_API
                 });
             });
         }
+
         public void ConfigureContainer(ContainerBuilder Builder)
         {
             Builder.RegisterModule(new ModuleIoC());
         }
+
         private void SetupJWTServices(IServiceCollection services)
         {
             services.AddAuthentication(options =>
@@ -146,6 +149,7 @@ namespace ContactSphere_API
                     .RequireAuthenticatedUser().Build());
             });
         }
+
         private static void HandleHead(IApplicationBuilder app)
         {
             app.Run(async context =>

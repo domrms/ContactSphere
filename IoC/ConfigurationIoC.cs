@@ -22,7 +22,6 @@ namespace IoC
             builder.RegisterType<ApplicationUsuario>().As<IApplicationUsuario>();
             builder.RegisterType<ValidacaoUsuario>().As<IValidacaoUsuario>();
             builder.RegisterType<AuthenticateService>().As<IAuthenticateService>();
-
         }
     }
 }

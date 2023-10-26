@@ -12,11 +12,13 @@ namespace Adapter.Utils
     {
         private readonly DataContext _context;
         private readonly IConfiguration _configuration;
+
         public AuthenticateService(DataContext context, IConfiguration configuration)
         {
             _context = context;
             _configuration = configuration;
         }
+
         public bool Autenticacao(string email, string senha)
         {
             var usuario = _context.Usuarios.Where(x => x.Email.ToLower() == email.ToLower()).FirstOrDefault();
@@ -35,15 +37,14 @@ namespace Adapter.Utils
             return true;
         }
 
-
         public string GenerateToken(string email, string role)
         {
             var claims = new List<Claim>
-{
-    new Claim("email", email),
-    new Claim("role", role),
-    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-};
+                {
+                    new Claim("email", email),
+                    new Claim("role", role),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                };
 
             var privateKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(privateKey, SecurityAlgorithms.HmacSha256);
@@ -62,6 +63,5 @@ namespace Adapter.Utils
 
             return "Bearer " + stringToken;
         }
-
     }
 }
