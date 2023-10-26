@@ -24,13 +24,32 @@ namespace Application.Service
 
         public ResponseUsuarioDTO Cadastro(RequestUsuarioDTO usuarioDto)
         {
-            string mensagem = _validacaoUsuario.ValidaDadosUsuarioAsync(usuarioDto);
+            string mensagem = _validacaoUsuario.ValidaDadosUsuario(usuarioDto);
             if (!string.IsNullOrEmpty(mensagem))
                 return _mapperUsuario.MapperToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
             try
             {
                 UserToken userToken = _serviceUsuario.InserirUsuario(usuarioDto.Nome ,usuarioDto.Email, usuarioDto.Senha, usuarioDto.Role);
                 if (userToken !=  null)
+                    return _mapperUsuario.MapperToDTO(HttpStatusCode.OK, mensagem, userToken);
+                else
+                    return _mapperUsuario.MapperToDTO(HttpStatusCode.NotFound, semDados);
+            }
+            catch (Exception erro)
+            {
+                return _mapperUsuario.MapperToDTO(HttpStatusCode.InternalServerError, erro.Message);
+            }
+        }
+
+        public ResponseUsuarioDTO Login(RequestLoginDTO loginDto)
+        {
+            string mensagem = _validacaoUsuario.ValidaDadosLogin(loginDto);
+            if (!string.IsNullOrEmpty(mensagem))
+                return _mapperUsuario.MapperToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
+            try
+            {
+                UserToken userToken = _serviceUsuario.RetornaTokenLogin(loginDto.Email);
+                if (userToken != null)
                     return _mapperUsuario.MapperToDTO(HttpStatusCode.OK, mensagem, userToken);
                 else
                     return _mapperUsuario.MapperToDTO(HttpStatusCode.NotFound, semDados);

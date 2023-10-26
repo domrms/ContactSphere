@@ -4,6 +4,7 @@ namespace Application.Interface
 {
     public interface IValidacaoUsuario
     {
-       public string ValidaDadosUsuarioAsync(RequestUsuarioDTO usuarioDTO);
+       public string ValidaDadosUsuario(RequestUsuarioDTO usuarioDTO);
+       public string ValidaDadosLogin(RequestLoginDTO loginDTO);
     }
 }

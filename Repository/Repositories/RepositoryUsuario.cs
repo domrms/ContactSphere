@@ -1,9 +1,8 @@
-﻿using Core.Interface;
+﻿using Adapter.Interfaces;
+using Core.Interface;
 using Data;
 using Domain.Entities;
 using Domain.Models;
-using Utils;
-using Utils._4._1_Interface;
 
 namespace Repository.Repositories
 {
@@ -27,6 +26,17 @@ namespace Repository.Repositories
             };
             _context.Usuarios.Add(usuario);
             _context.SaveChanges();
+
+            var token = _authenticateService.GenerateToken(email, role);
+            return new UserToken
+            {
+                Token = token
+            };
+        }
+
+        public UserToken RetornaTokenLogin(string email)
+        {
+            var role = _context.Usuarios.Where(x => x.Email.ToLower() == email.ToLower()).Select(x => x.Role).FirstOrDefault();
 
             var token = _authenticateService.GenerateToken(email, role);
             return new UserToken

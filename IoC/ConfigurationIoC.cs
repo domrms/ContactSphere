@@ -1,5 +1,6 @@
 ﻿using Adapter.Interfaces;
 using Adapter.Map;
+using Adapter.Utils;
 using Application.Interface;
 using Application.Service;
 using Application.Validator;
@@ -8,8 +9,6 @@ using Core.Interface;
 using Core.Interface.Services;
 using Repository.Repositories;
 using Services.Services;
-using Utils;
-using Utils._4._1_Interface;
 
 namespace IoC
 {
