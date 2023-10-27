@@ -5,8 +5,8 @@ namespace Application.Interface.Usuario
 {
     public interface IApplicationUsuario
     {
-        ResponseUsuarioDTO Cadastro(RequestUsuarioDTO request);
+        ResponseUsuarioDTO Cadastro(RequestUsuarioDto request);
 
-        ResponseUsuarioDTO Login(RequestLoginDTO request);
+        ResponseUsuarioDTO Login(RequestLoginDto request);
     }
 }

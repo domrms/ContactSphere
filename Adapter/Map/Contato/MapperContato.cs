@@ -7,21 +7,21 @@ namespace Adapter.Map.Contato
 {
     public class MapperContato : IMapperContato
     {
-        public ResponseBaseDTO MapperToDTO(HttpStatusCode codRetorno, string mensagem)
+        public ResponseBaseDto MapperToDTO(HttpStatusCode codRetorno, string mensagem)
         {
-            return new ResponseBaseDTO
+            return new ResponseBaseDto
             {
-                codRetorno = codRetorno,
-                mensagem = mensagem
+                CodRetorno = codRetorno,
+                Mensagem = mensagem
             };
         }
 
-        public ResponseContatoDTO MapperContatoPorIdToDTO(HttpStatusCode codRetorno, string mensagem, List<Domain.Entities.Contatos> ListaContato = null)
+        public ResponseContatoDto MapperContatoPorIdToDTO(HttpStatusCode codRetorno, string mensagem, List<Domain.Entities.Contatos> ListaContato = null)
         {
-            return new ResponseContatoDTO
+            return new ResponseContatoDto
             {
-                codRetorno = codRetorno,
-                mensagem = mensagem,
+                CodRetorno = codRetorno,
+                Mensagem = mensagem,
                 Contatos = ListaContato
             };
         }

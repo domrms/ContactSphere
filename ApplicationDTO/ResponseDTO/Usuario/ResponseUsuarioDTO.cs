@@ -2,8 +2,8 @@
 
 namespace ApplicationDTO.ResponseDTO.Usuario
 {
-    public class ResponseUsuarioDTO : ResponseBaseDTO
+    public class ResponseUsuarioDTO : ResponseBaseDto
     {
-        public UserToken usuarioToken { get; set; }
+        public UserToken UsuarioToken { get; set; }
     }
 }

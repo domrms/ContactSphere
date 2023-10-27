@@ -6,14 +6,14 @@ namespace Application.Interface.Contato
 {
     public interface IApplicationContato
     {
-        ResponseBaseDTO Cadastro(RequestDadosContatoDto request);
+        ResponseBaseDto Cadastro(RequestDadosContatoDto request);
 
-        ResponseContatoDTO RequestContatoPorId(RequestContatoIdDTO request);
+        ResponseContatoDto RequestContatoPorId(RequestContatoIdDto request);
 
-        ResponseContatoDTO RequestListaContatosUsuario(RequestContatoIdDTO request);
+        ResponseContatoDto RequestListaContatosUsuario(RequestContatoIdDto request);
 
-        ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO);
+        ResponseBaseDto DesativarContato(RequestContatoIdDto requestContatoPorIdDTO);
 
-        ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto);
+        ResponseBaseDto UpdateContato(RequestUpdateContatoDto requestDadosContatoDto);
     }
 }

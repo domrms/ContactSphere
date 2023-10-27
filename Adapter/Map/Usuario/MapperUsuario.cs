@@ -11,9 +11,9 @@ namespace Adapter.Map.Usuario
         {
             return new ResponseUsuarioDTO
             {
-                codRetorno = codRetorno,
-                mensagem = mensagem,
-                usuarioToken = usuarioToken
+                CodRetorno = codRetorno,
+                Mensagem = mensagem,
+                UsuarioToken = usuarioToken
             };
         }
     }

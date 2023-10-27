@@ -2,9 +2,9 @@
 
 namespace ApplicationDTO.ResponseDTO
 {
-    public class ResponseBaseDTO
+    public class ResponseBaseDto
     {
-        public HttpStatusCode codRetorno { get; set; }
-        public string mensagem { get; set; }
+        public HttpStatusCode CodRetorno { get; set; }
+        public string Mensagem { get; set; }
     }
 }

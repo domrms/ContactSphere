@@ -22,7 +22,7 @@ namespace Application.Service.Usuario
             _serviceUsuario = serviceUsuario;
         }
 
-        public ResponseUsuarioDTO Cadastro(RequestUsuarioDTO usuarioDto)
+        public ResponseUsuarioDTO Cadastro(RequestUsuarioDto usuarioDto)
         {
             string mensagem = _validacaoUsuario.ValidaDadosUsuario(usuarioDto);
             if (!string.IsNullOrEmpty(mensagem))
@@ -41,7 +41,7 @@ namespace Application.Service.Usuario
             }
         }
 
-        public ResponseUsuarioDTO Login(RequestLoginDTO loginDto)
+        public ResponseUsuarioDTO Login(RequestLoginDto loginDto)
         {
             string mensagem = _validacaoUsuario.ValidaDadosLogin(loginDto);
             if (!string.IsNullOrEmpty(mensagem))

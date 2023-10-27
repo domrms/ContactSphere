@@ -1,6 +1,6 @@
 ﻿namespace ApplicationDTO.ResponseDTO.Contato
 {
-    public class ResponseContatoDTO : ResponseBaseDTO
+    public class ResponseContatoDto : ResponseBaseDto
     {
         public List<Domain.Entities.Contatos> Contatos { get; set; }
     }

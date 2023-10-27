@@ -1,6 +1,6 @@
 ﻿namespace ApplicationDTO.RequestDTO.Usuario
 {
-    public class RequestUsuarioDTO
+    public class RequestUsuarioDto
     {
         public string Nome { get; set; }
         public string Email { get; set; }

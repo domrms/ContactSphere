@@ -1,7 +1,6 @@
 ﻿using Application.Interface.Usuario;
 using ApplicationDTO.RequestDTO.Usuario;
 using ApplicationDTO.ResponseDTO.Usuario;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,20 +20,20 @@ namespace ContactSphere_API.Controllers.Usuario
         [HttpPost]
         [Route("/Cadastrar")]
         [AllowAnonymous]
-        public ResponseUsuarioDTO Cadastrar(RequestUsuarioDTO request)
+        public ResponseUsuarioDTO Cadastrar(RequestUsuarioDto request)
         {
             var retorno = _applicationUsuario.Cadastro(request);
-            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            HttpContext.Response.StatusCode = (int)retorno.CodRetorno;
             return retorno;
         }
 
         [HttpPost]
         [Route("/Login")]
         [AllowAnonymous]
-        public ResponseUsuarioDTO Login(RequestLoginDTO request)
+        public ResponseUsuarioDTO Login(RequestLoginDto request)
         {
             var retorno = _applicationUsuario.Login(request);
-            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            HttpContext.Response.StatusCode = (int)retorno.CodRetorno;
             return retorno;
         }
     }

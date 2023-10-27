@@ -21,7 +21,7 @@ namespace Application.Validator.Contato
             return string.Empty;
         }
 
-        public string ValidaDadosUpdateContato(RequestUpdateContatoDTO cadastrarContatoDto)
+        public string ValidaDadosUpdateContato(RequestUpdateContatoDto cadastrarContatoDto)
         {
             if (!ValidaNomeEmBranco(cadastrarContatoDto.Nome)) return erroNomeInvalido;
             if (!ValidaEmail(cadastrarContatoDto.Email)) return erroEmailInvalido;
@@ -31,7 +31,7 @@ namespace Application.Validator.Contato
             return string.Empty;
         }
 
-        public string ValidaDadosPorId(RequestContatoIdDTO requestContatoPorIdDTO)
+        public string ValidaDadosPorId(RequestContatoIdDto requestContatoPorIdDTO)
         {
             if (!ValidaID(requestContatoPorIdDTO.Id)) return erroIdUsuario;
 

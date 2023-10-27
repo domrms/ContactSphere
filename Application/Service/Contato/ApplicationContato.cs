@@ -22,7 +22,7 @@ namespace Application.Service.Contato
             _serviceContato = serviceContato;
         }
 
-        public ResponseBaseDTO Cadastro(RequestDadosContatoDto cadastrarContatoDto)
+        public ResponseBaseDto Cadastro(RequestDadosContatoDto cadastrarContatoDto)
         {
             string mensagem = _validacaoContato.ValidaDadosContato(cadastrarContatoDto);
             if (!string.IsNullOrEmpty(mensagem))
@@ -41,7 +41,7 @@ namespace Application.Service.Contato
             }
         }
 
-        public ResponseContatoDTO RequestContatoPorId(RequestContatoIdDTO requestContatoPorIdDTO)
+        public ResponseContatoDto RequestContatoPorId(RequestContatoIdDto requestContatoPorIdDTO)
         {
             string mensagem = _validacaoContato.ValidaDadosPorId(requestContatoPorIdDTO);
             if (!string.IsNullOrEmpty(mensagem))
@@ -60,7 +60,7 @@ namespace Application.Service.Contato
             }
         }
 
-        public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoIdDTO requestContatoPorIdDTO)
+        public ResponseContatoDto RequestListaContatosUsuario(RequestContatoIdDto requestContatoPorIdDTO)
         {
             string mensagem = _validacaoContato.ValidaDadosPorId(requestContatoPorIdDTO);
             if (!string.IsNullOrEmpty(mensagem))
@@ -79,7 +79,7 @@ namespace Application.Service.Contato
             }
         }
 
-        public ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO)
+        public ResponseBaseDto DesativarContato(RequestContatoIdDto requestContatoPorIdDTO)
         {
             string mensagem = _validacaoContato.ValidaDadosPorId(requestContatoPorIdDTO);
             if (!string.IsNullOrEmpty(mensagem))
@@ -98,7 +98,7 @@ namespace Application.Service.Contato
             }
         }
 
-        public ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto)
+        public ResponseBaseDto UpdateContato(RequestUpdateContatoDto requestDadosContatoDto)
         {
             string mensagem = _validacaoContato.ValidaDadosUpdateContato(requestDadosContatoDto);
             if (!string.IsNullOrEmpty(mensagem))

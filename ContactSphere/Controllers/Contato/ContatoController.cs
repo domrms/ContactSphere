@@ -23,60 +23,60 @@ namespace ContactSphere_API.Controllers.Contato
         [HttpPost]
         [Route("/CadastrarContato")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
-        public ResponseBaseDTO Cadastrar(RequestDadosContatoDto requestDadosContatoDto)
+        public ResponseBaseDto Cadastrar(RequestDadosContatoDto requestDadosContatoDto)
         {
             var retorno = _applicationContato.Cadastro(requestDadosContatoDto);
-            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            HttpContext.Response.StatusCode = (int)retorno.CodRetorno;
             return retorno;
         }
 
         [HttpPost]
         [Route("/RequestContatoPorId")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
-        public ResponseContatoDTO RequestContatoPorId(RequestContatoIdDTO requestContatoPorIdDTO)
+        public ResponseContatoDto RequestContatoPorId(RequestContatoIdDto requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.RequestContatoPorId(requestContatoPorIdDTO);
-            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            HttpContext.Response.StatusCode = (int)retorno.CodRetorno;
             return retorno;
         }
 
         [HttpPost]
         [Route("/RequestListaContatosUsuario")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
-        public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoIdDTO requestContatoPorIdDTO)
+        public ResponseContatoDto RequestListaContatosUsuario(RequestContatoIdDto requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.RequestListaContatosUsuario(requestContatoPorIdDTO);
-            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            HttpContext.Response.StatusCode = (int)retorno.CodRetorno;
             return retorno;
         }
 
         [HttpPost]
         [Route("/DesativarContato")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
-        public ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO)
+        public ResponseBaseDto DesativarContato(RequestContatoIdDto requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.DesativarContato(requestContatoPorIdDTO);
-            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            HttpContext.Response.StatusCode = (int)retorno.CodRetorno;
             return retorno;
         }
 
         [HttpPost]
         [Route("/UpdateContato")]
         [Authorize(Roles = "ADM", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
-        public ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto)
+        public ResponseBaseDto UpdateContato(RequestUpdateContatoDto requestDadosContatoDto)
         {
             if (User.IsInRole("ADM"))
             {
                 var Unauthorized = _applicationContato.UpdateContato(requestDadosContatoDto);
-                HttpContext.Response.StatusCode = (int)Unauthorized.codRetorno;
+                HttpContext.Response.StatusCode = (int)Unauthorized.CodRetorno;
                 return Unauthorized;
             }
             else
             {
-                return new ResponseBaseDTO
+                return new ResponseBaseDto
                 {
-                    codRetorno = HttpStatusCode.Unauthorized,
-                    mensagem = ""
+                    CodRetorno = HttpStatusCode.Unauthorized,
+                    Mensagem = ""
                 };
             }
         }

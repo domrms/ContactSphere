@@ -18,7 +18,7 @@ namespace Application.Validator.Usuario
         private const string erroRoleInvalida = "A ROLE DEVE SER ADM OU USR!";
         private const string erroUsuarioNaoCadastrado = "USUÁRIO NÃO CADASTRADO!";
 
-        public string ValidaDadosUsuario(RequestUsuarioDTO usuarioDTO)
+        public string ValidaDadosUsuario(RequestUsuarioDto usuarioDTO)
         {
             if (!ValidaEmail(usuarioDTO.Email)) return erroEmailInvalido;
             if (_authenticateService.UsuarioExiste(usuarioDTO.Email)) return erroUsuarioExiste;
@@ -27,7 +27,7 @@ namespace Application.Validator.Usuario
             return string.Empty;
         }
 
-        public string ValidaDadosLogin(RequestLoginDTO loginDTO)
+        public string ValidaDadosLogin(RequestLoginDto loginDTO)
         {
             if (!_authenticateService.Autenticacao(loginDTO.Email, loginDTO.Senha)) return erroUsuarioNaoCadastrado;
 

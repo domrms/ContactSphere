@@ -6,8 +6,8 @@ namespace Adapter.Interfaces.Contato
 {
     public interface IMapperContato
     {
-        ResponseBaseDTO MapperToDTO(HttpStatusCode codRetorno, string mensagem);
+        ResponseBaseDto MapperToDTO(HttpStatusCode codRetorno, string mensagem);
 
-        ResponseContatoDTO MapperContatoPorIdToDTO(HttpStatusCode codRetorno, string mensagem, List<Domain.Entities.Contatos> ListaContato = null);
+        ResponseContatoDto MapperContatoPorIdToDTO(HttpStatusCode codRetorno, string mensagem, List<Domain.Entities.Contatos> ListaContato = null);
     }
 }

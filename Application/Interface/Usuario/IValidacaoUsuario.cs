@@ -4,8 +4,8 @@ namespace Application.Interface.Usuario
 {
     public interface IValidacaoUsuario
     {
-        public string ValidaDadosUsuario(RequestUsuarioDTO usuarioDTO);
+        public string ValidaDadosUsuario(RequestUsuarioDto usuarioDTO);
 
-        public string ValidaDadosLogin(RequestLoginDTO loginDTO);
+        public string ValidaDadosLogin(RequestLoginDto loginDTO);
     }
 }
