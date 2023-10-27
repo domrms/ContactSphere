@@ -5,7 +5,6 @@ O projeto "Contact Sphere" é uma aplicação de exemplo que demonstra a autenti
 ## Requisitos
 
 - .NET Core SDK
-- SQL Server (ou outro banco de dados suportado)
 
 ## Configuração
 
