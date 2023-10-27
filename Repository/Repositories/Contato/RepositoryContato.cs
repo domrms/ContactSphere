@@ -38,5 +38,9 @@ namespace Repository.Repositories.Contato
         {
             return _context.Contatos.Where(x => x.Id == id && x.Status == true);
         }
+        public IQueryable<Domain.Entities.Contatos> BuscaContatoPorIdUsuario(int id)
+        {
+            return _context.Contatos.Where(x => x.FkIdUsuario == id && x.Status == true);
+        }
     }
 }

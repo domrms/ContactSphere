@@ -21,5 +21,9 @@ namespace Services.Services.Contato
         {
             return _repositoryContato.BuscaContatoPorId(id).ToList();
         }
+        public List<Domain.Entities.Contatos> BuscaContatoPorIdUsuario(int id)
+        {
+            return _repositoryContato.BuscaContatoPorIdUsuario(id).ToList();
+        }
     }
 }

@@ -59,5 +59,24 @@ namespace Application.Service.Contato
                 return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.InternalServerError, erro.Message);
             }
         }
+
+        public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoPorIdDTO requestContatoPorIdDTO)
+        {
+            string mensagem = _validacaoContato.ValidaDadosRequestContatoPorId(requestContatoPorIdDTO);
+            if (!string.IsNullOrEmpty(mensagem))
+                return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
+            try
+            {
+                List<Domain.Entities.Contatos> lista = _serviceContato.BuscaContatoPorIdUsuario(requestContatoPorIdDTO.Id).ToList();
+                if (lista.Count > 0)
+                    return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.OK, mensagem, lista);
+                else
+                    return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.NotFound, semDados);
+            }
+            catch (Exception erro)
+            {
+                return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.InternalServerError, erro.Message);
+            }
+        }
     }
 }

@@ -37,5 +37,15 @@ namespace ContactSphere_API.Controllers.Contato
             HttpContext.Response.StatusCode = (int)retorno.codRetorno;
             return retorno;
         }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("/RequestListaContatosUsuario")]
+        public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoPorIdDTO requestContatoPorIdDTO)
+        {
+            var retorno = _applicationContato.RequestListaContatosUsuario(requestContatoPorIdDTO);
+            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            return retorno;
+        }
     }
 }

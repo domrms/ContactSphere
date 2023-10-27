@@ -5,5 +5,6 @@
         bool CadastrarContato(string nome, string email, string telefone, bool status, int fkIdUsuario);
 
         List<Domain.Entities.Contatos> BuscaContatoPorId(int id);
+        List<Domain.Entities.Contatos> BuscaContatoPorIdUsuario(int id);
     }
 }

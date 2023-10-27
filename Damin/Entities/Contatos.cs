@@ -17,6 +17,7 @@ namespace Domain.Entities
         [Required, MaxLength(100)]
         public string Email { get; set; }
 
+        [JsonIgnore]
         [Required]
         public bool Status { get; set; }
 
