@@ -61,7 +61,7 @@ namespace Adapter.Utils
             var tokenHandler = new JwtSecurityTokenHandler();
             var stringToken = tokenHandler.WriteToken(token);
 
-            return "Bearer " + stringToken;
+            return stringToken;
         }
     }
 }

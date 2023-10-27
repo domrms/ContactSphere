@@ -146,6 +146,7 @@ namespace ContactSphere_API
             {
                 auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
                     .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme‌​)
+                    .RequireRole("ADM", "USR")
                     .RequireAuthenticatedUser().Build());
             });
         }

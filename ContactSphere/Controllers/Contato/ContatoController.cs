@@ -2,8 +2,10 @@
 using ApplicationDTO.RequestDTO.Contato;
 using ApplicationDTO.ResponseDTO;
 using ApplicationDTO.ResponseDTO.Contato;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace ContactSphere_API.Controllers.Contato
 {
@@ -18,9 +20,9 @@ namespace ContactSphere_API.Controllers.Contato
             _applicationContato = applicationContato;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [Route("/CadastrarContato")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
         public ResponseBaseDTO Cadastrar(RequestDadosContatoDto requestDadosContatoDto)
         {
             var retorno = _applicationContato.Cadastro(requestDadosContatoDto);
@@ -28,9 +30,9 @@ namespace ContactSphere_API.Controllers.Contato
             return retorno;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [Route("/RequestContatoPorId")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
         public ResponseContatoDTO RequestContatoPorId(RequestContatoIdDTO requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.RequestContatoPorId(requestContatoPorIdDTO);
@@ -38,9 +40,9 @@ namespace ContactSphere_API.Controllers.Contato
             return retorno;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [Route("/RequestListaContatosUsuario")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
         public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoIdDTO requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.RequestListaContatosUsuario(requestContatoPorIdDTO);
@@ -48,9 +50,9 @@ namespace ContactSphere_API.Controllers.Contato
             return retorno;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [Route("/DesativarContato")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
         public ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.DesativarContato(requestContatoPorIdDTO);
@@ -58,14 +60,25 @@ namespace ContactSphere_API.Controllers.Contato
             return retorno;
         }
 
-        [AllowAnonymous]
         [HttpPost]
         [Route("/UpdateContato")]
+        [Authorize(Roles = "ADM", AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "Bearer")]
         public ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto)
         {
-            var retorno = _applicationContato.UpdateContato(requestDadosContatoDto);
-            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
-            return retorno;
+            if (User.IsInRole("ADM"))
+            {
+                var Unauthorized = _applicationContato.UpdateContato(requestDadosContatoDto);
+                HttpContext.Response.StatusCode = (int)Unauthorized.codRetorno;
+                return Unauthorized;
+            }
+            else
+            {
+                return new ResponseBaseDTO
+                {
+                    codRetorno = HttpStatusCode.Unauthorized,
+                    mensagem = ""
+                };
+            }
         }
     }
 }
