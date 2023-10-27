@@ -10,7 +10,7 @@ Antes de executar os projetos, você precisa ter o repositório baixado e o .NET
 
 1. Digite o seguinte comando no terminal:
 
-```https://github.com/domrms/ContactSphere.git```
+```git clone https://github.com/domrms/ContactSphere.git```
 
 ### Instalação do .NET Core
 
