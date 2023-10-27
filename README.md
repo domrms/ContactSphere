@@ -2,6 +2,12 @@
 
 O projeto "Contact Sphere" é uma aplicação de exemplo que demonstra a autenticação de usuário com tokens JWT e operações CRUD em uma coleção de contatos. Ele é desenvolvido em ASP.NET Core e utiliza Entity Framework Core para a persistência de dados.
 
+### Informações Relevantes
+1. Trata-se de uma primeira versão de um projeto CRUD de uma agenda.
+2. O token JWT está funcionando de acordo com as roles.
+3. Preferi por não utilizar a funcionalidade de remover contato. Optei por utilizar o update de uma flag status do contato na tabela de contatos, isso para preservar o histórico de dados.
+4. Uma ideia de novas funcionalidades seria de recupar senha, utilizar um load balance para controle das requisições e adotar um sistema de logs para ficar registrado no banco de dados as movimentações o usuário.
+
 ## Requisitos
 
 Antes de executar os projetos, você precisa ter o repositório baixado e o .NET Core instalado em sua máquina. Siga as instruções abaixo para instalá-lo por linha de comando:
