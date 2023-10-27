@@ -1,5 +1,6 @@
 ﻿using Adapter.Interfaces.Contato;
 using ApplicationDTO.ResponseDTO;
+using ApplicationDTO.ResponseDTO.Contato;
 using System.Net;
 
 namespace Adapter.Map.Contato
@@ -12,6 +13,16 @@ namespace Adapter.Map.Contato
             {
                 codRetorno = codRetorno,
                 mensagem = mensagem
+            };
+        }
+
+        public ResponseContatoDTO MapperContatoPorIdToDTO(HttpStatusCode codRetorno, string mensagem, List<Domain.Entities.Contatos> ListaContato = null)
+        {
+            return new ResponseContatoDTO
+            {
+                codRetorno = codRetorno,
+                mensagem = mensagem,
+                Contatos = ListaContato
             };
         }
     }

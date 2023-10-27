@@ -2,6 +2,7 @@
 using Application.Interface.Contato;
 using ApplicationDTO.RequestDTO.Contato;
 using ApplicationDTO.ResponseDTO;
+using ApplicationDTO.ResponseDTO.Contato;
 using Core.Interface.Services.Contato;
 using System.Net;
 
@@ -37,6 +38,25 @@ namespace Application.Service.Contato
             catch (Exception erro)
             {
                 return _mapperContato.MapperToDTO(HttpStatusCode.InternalServerError, erro.Message);
+            }
+        }
+
+        public ResponseContatoDTO RequestContatoPorId(RequestContatoPorIdDTO requestContatoPorIdDTO)
+        {
+            string mensagem = _validacaoContato.ValidaDadosRequestContatoPorId(requestContatoPorIdDTO);
+            if (!string.IsNullOrEmpty(mensagem))
+                return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
+            try
+            {
+                List<Domain.Entities.Contatos> lista = _serviceContato.BuscaContatoPorId(requestContatoPorIdDTO.Id).ToList();
+                if (lista.Count > 0)
+                    return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.OK, mensagem, lista);
+                else
+                    return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.NotFound, semDados);
+            }
+            catch (Exception erro)
+            {
+                return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.InternalServerError, erro.Message);
             }
         }
     }

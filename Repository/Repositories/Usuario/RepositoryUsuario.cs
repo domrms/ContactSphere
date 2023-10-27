@@ -6,7 +6,7 @@ using Domain.Models;
 
 namespace Repository.Repositories.Usuario
 {
-    public class RepositoryUsuario : RepositoryBase<Usuario>, IRepositoryUsuario
+    public class RepositoryUsuario : RepositoryBase<Usuarios>, IRepositoryUsuario
     {
         private readonly DataContext _context;
         private readonly IAuthenticateService _authenticateService;
@@ -19,7 +19,7 @@ namespace Repository.Repositories.Usuario
 
         public UserToken Cadastrar(string nome, string email, string senha, string role)
         {
-            Usuario usuario = new Usuario()
+            Domain.Entities.Usuarios usuario = new Domain.Entities.Usuarios()
             {
                 Nome = nome,
                 Email = email,

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace Domain.Entities
 {
-    public class Contato
+    public class Contatos
     {
         [JsonIgnore]
         [Key]
@@ -19,11 +19,12 @@ namespace Domain.Entities
 
         [Required]
         public bool Status { get; set; }
+
         [Required, MaxLength(100)]
         public string Telefone { get; set; }
-        [JsonIgnore]
 
-        [Required, ForeignKey(nameof(Usuario))]
+        [JsonIgnore]
+        [Required, ForeignKey(nameof(Usuarios))]
         public long FkIdUsuario { get; set; }
     }
 }

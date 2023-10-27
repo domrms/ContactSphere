@@ -1,6 +1,7 @@
 ﻿using Application.Interface.Contato;
 using ApplicationDTO.RequestDTO.Contato;
 using ApplicationDTO.ResponseDTO;
+using ApplicationDTO.ResponseDTO.Contato;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,16 @@ namespace ContactSphere_API.Controllers.Contato
         public ResponseBaseDTO Cadastrar(RequestCadastrarContatoDto request)
         {
             var retorno = _applicationContato.Cadastro(request);
+            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            return retorno;
+        }
+
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("/RequestContatoPorId")]
+        public ResponseContatoDTO RequestContatoPorId(RequestContatoPorIdDTO requestContatoPorIdDTO)
+        {
+            var retorno = _applicationContato.RequestContatoPorId(requestContatoPorIdDTO);
             HttpContext.Response.StatusCode = (int)retorno.codRetorno;
             return retorno;
         }

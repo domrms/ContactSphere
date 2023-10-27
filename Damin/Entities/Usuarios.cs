@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
-    public class Usuario
+    public class Usuarios
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

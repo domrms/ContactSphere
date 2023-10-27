@@ -9,7 +9,7 @@ namespace Data
         {
         }
 
-        public DbSet<Usuario> Usuarios { get; set; }
-        public DbSet<Contato> Contatos { get; set; }
+        public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Contatos> Contatos { get; set; }
     }
 }

@@ -1,10 +1,9 @@
 ﻿using Core.Interface.Repository.Contato;
 using Data;
-using Domain.Entities;
 
 namespace Repository.Repositories.Contato
 {
-    public class RepositoryContato : RepositoryBase<Contato>, IRepositoryContato
+    public class RepositoryContato : RepositoryBase<Domain.Entities.Contatos>, IRepositoryContato
     {
         private readonly DataContext _context;
 
@@ -17,7 +16,7 @@ namespace Repository.Repositories.Contato
         {
             try
             {
-                Contato contato = new Contato()
+                Domain.Entities.Contatos contato = new Domain.Entities.Contatos()
                 {
                     Nome = nome,
                     Email = email,
@@ -28,12 +27,16 @@ namespace Repository.Repositories.Contato
                 _context.Contatos.Add(contato);
                 _context.SaveChanges();
                 return true;
-
             }
             catch (Exception ex)
             {
                 return false;
             }
+        }
+
+        public IQueryable<Domain.Entities.Contatos> BuscaContatoPorId(int id)
+        {
+            return _context.Contatos.Where(x => x.Id == id && x.Status == true);
         }
     }
 }

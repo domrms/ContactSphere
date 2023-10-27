@@ -5,7 +5,7 @@ using Domain.Models;
 
 namespace Services.Services.Usuario
 {
-    public class ServiceUsuario : ServiceBase<Usuario>, IServiceUsuario
+    public class ServiceUsuario : ServiceBase<Usuarios>, IServiceUsuario
     {
         private readonly IRepositoryUsuario _repositoryUsuario;
 

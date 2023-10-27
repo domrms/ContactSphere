@@ -2,7 +2,7 @@
 
 namespace Application.Validator
 {
-    public  class ValidacaoBase
+    public class ValidacaoBase
     {
         protected bool ValidaNomeEmBranco(string usuario)
         {
@@ -10,6 +10,7 @@ namespace Application.Validator
                 return false;
             return usuario == "" ? false : usuario.Length > 50 ? false : true;
         }
+
         protected bool ValidaEmail(string email)
         {
             Regex rg = new Regex(@"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$");
