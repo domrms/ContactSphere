@@ -22,9 +22,9 @@ namespace Application.Service.Contato
             _serviceContato = serviceContato;
         }
 
-        public ResponseBaseDTO Cadastro(RequestCadastrarContatoDto cadastrarContatoDto)
+        public ResponseBaseDTO Cadastro(RequestDadosContatoDto cadastrarContatoDto)
         {
-            string mensagem = _validacaoContato.ValidaDadosCadastroContato(cadastrarContatoDto);
+            string mensagem = _validacaoContato.ValidaDadosContato(cadastrarContatoDto);
             if (!string.IsNullOrEmpty(mensagem))
                 return _mapperContato.MapperToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
             try
@@ -41,9 +41,9 @@ namespace Application.Service.Contato
             }
         }
 
-        public ResponseContatoDTO RequestContatoPorId(RequestContatoPorIdDTO requestContatoPorIdDTO)
+        public ResponseContatoDTO RequestContatoPorId(RequestContatoIdDTO requestContatoPorIdDTO)
         {
-            string mensagem = _validacaoContato.ValidaDadosRequestContatoPorId(requestContatoPorIdDTO);
+            string mensagem = _validacaoContato.ValidaDadosPorId(requestContatoPorIdDTO);
             if (!string.IsNullOrEmpty(mensagem))
                 return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
             try
@@ -60,9 +60,9 @@ namespace Application.Service.Contato
             }
         }
 
-        public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoPorIdDTO requestContatoPorIdDTO)
+        public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoIdDTO requestContatoPorIdDTO)
         {
-            string mensagem = _validacaoContato.ValidaDadosRequestContatoPorId(requestContatoPorIdDTO);
+            string mensagem = _validacaoContato.ValidaDadosPorId(requestContatoPorIdDTO);
             if (!string.IsNullOrEmpty(mensagem))
                 return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
             try
@@ -76,6 +76,42 @@ namespace Application.Service.Contato
             catch (Exception erro)
             {
                 return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.InternalServerError, erro.Message);
+            }
+        }
+        public ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO)
+        {
+            string mensagem = _validacaoContato.ValidaDadosPorId(requestContatoPorIdDTO);
+            if (!string.IsNullOrEmpty(mensagem))
+                return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
+            try
+            {
+                bool cadastro = _serviceContato.AtualizaStatus(requestContatoPorIdDTO.Id);
+                if (cadastro)
+                    return _mapperContato.MapperToDTO(HttpStatusCode.OK, mensagem);
+                else
+                    return _mapperContato.MapperToDTO(HttpStatusCode.NotFound, semDados);
+            }
+            catch (Exception erro)
+            {
+                return _mapperContato.MapperToDTO(HttpStatusCode.InternalServerError, erro.Message);
+            }
+        }
+        public ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto)
+        {
+            string mensagem = _validacaoContato.ValidaDadosUpdateContato(requestDadosContatoDto);
+            if (!string.IsNullOrEmpty(mensagem))
+                return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
+            try
+            {
+                bool cadastro = _serviceContato.UpdateContato(requestDadosContatoDto.Id, requestDadosContatoDto.Nome, requestDadosContatoDto.Email, requestDadosContatoDto.Telefone);
+                if (cadastro)
+                    return _mapperContato.MapperToDTO(HttpStatusCode.OK, mensagem);
+                else
+                    return _mapperContato.MapperToDTO(HttpStatusCode.NotFound, semDados);
+            }
+            catch (Exception erro)
+            {
+                return _mapperContato.MapperToDTO(HttpStatusCode.InternalServerError, erro.Message);
             }
         }
     }

@@ -11,7 +11,7 @@ namespace Application.Validator.Contato
         private const string erroFkUsuarioInvalido = "O ID DO USUÁRIO É INVÁLIDO!";
         private const string erroIdUsuario = "O ID É INVÁLIDO!";
 
-        public string ValidaDadosCadastroContato(RequestCadastrarContatoDto cadastrarContatoDto)
+        public string ValidaDadosContato(RequestDadosContatoDto cadastrarContatoDto)
         {
             if (!ValidaNomeEmBranco(cadastrarContatoDto.Nome)) return erroNomeInvalido;
             if (!ValidaEmail(cadastrarContatoDto.Email)) return erroEmailInvalido;
@@ -20,8 +20,17 @@ namespace Application.Validator.Contato
 
             return string.Empty;
         }
+        public string ValidaDadosUpdateContato(RequestUpdateContatoDTO cadastrarContatoDto)
+        {
+            if (!ValidaNomeEmBranco(cadastrarContatoDto.Nome)) return erroNomeInvalido;
+            if (!ValidaEmail(cadastrarContatoDto.Email)) return erroEmailInvalido;
+            //if (!ValidaTelefone(cadastrarContatoDto.Telefone)) return erroTelefoneInvalido;
+            if (!ValidaID(cadastrarContatoDto.Id)) return erroFkUsuarioInvalido;
 
-        public string ValidaDadosRequestContatoPorId(RequestContatoPorIdDTO requestContatoPorIdDTO)
+            return string.Empty;
+        }
+
+        public string ValidaDadosPorId(RequestContatoIdDTO requestContatoPorIdDTO)
         {
             if (!ValidaID(requestContatoPorIdDTO.Id)) return erroIdUsuario;
 

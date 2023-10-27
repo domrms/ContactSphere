@@ -42,5 +42,41 @@ namespace Repository.Repositories.Contato
         {
             return _context.Contatos.Where(x => x.FkIdUsuario == id && x.Status == true);
         }
+        public bool AtualizaStatus(int id)
+        {
+            try
+            {
+                var contatoParaAtualizar = _context.Contatos.FirstOrDefault(x => x.Id == id);
+                if (contatoParaAtualizar != null)
+                {
+                    contatoParaAtualizar.Status = false;
+                }
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+        public bool UpdateContato(int id, string nome, string email, string telefone)
+        {
+            try
+            {
+                var contatoParaAtualizar = _context.Contatos.FirstOrDefault(x => x.Id == id);
+                if (contatoParaAtualizar != null)
+                {
+                    contatoParaAtualizar.Nome = nome;
+                    contatoParaAtualizar.Email = email;
+                    contatoParaAtualizar.Telefone = telefone;
+                }
+                _context.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
     }
 }

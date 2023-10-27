@@ -21,9 +21,9 @@ namespace ContactSphere_API.Controllers.Contato
         [AllowAnonymous]
         [HttpPost]
         [Route("/CadastrarContato")]
-        public ResponseBaseDTO Cadastrar(RequestCadastrarContatoDto request)
+        public ResponseBaseDTO Cadastrar(RequestDadosContatoDto requestDadosContatoDto)
         {
-            var retorno = _applicationContato.Cadastro(request);
+            var retorno = _applicationContato.Cadastro(requestDadosContatoDto);
             HttpContext.Response.StatusCode = (int)retorno.codRetorno;
             return retorno;
         }
@@ -31,7 +31,7 @@ namespace ContactSphere_API.Controllers.Contato
         [AllowAnonymous]
         [HttpPost]
         [Route("/RequestContatoPorId")]
-        public ResponseContatoDTO RequestContatoPorId(RequestContatoPorIdDTO requestContatoPorIdDTO)
+        public ResponseContatoDTO RequestContatoPorId(RequestContatoIdDTO requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.RequestContatoPorId(requestContatoPorIdDTO);
             HttpContext.Response.StatusCode = (int)retorno.codRetorno;
@@ -41,9 +41,29 @@ namespace ContactSphere_API.Controllers.Contato
         [AllowAnonymous]
         [HttpPost]
         [Route("/RequestListaContatosUsuario")]
-        public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoPorIdDTO requestContatoPorIdDTO)
+        public ResponseContatoDTO RequestListaContatosUsuario(RequestContatoIdDTO requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.RequestListaContatosUsuario(requestContatoPorIdDTO);
+            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            return retorno;
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("/DesativarContato")]
+        //TODO: COLOCAR O JWT DO ADM
+        public ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO)
+        {
+            var retorno = _applicationContato.DesativarContato(requestContatoPorIdDTO);
+            HttpContext.Response.StatusCode = (int)retorno.codRetorno;
+            return retorno;
+        }
+        [AllowAnonymous]
+        [HttpPost]
+        [Route("/UpdateContato")]
+        //TODO: COLOCAR O JWT DO ADM
+        public ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto)
+        {
+            var retorno = _applicationContato.UpdateContato(requestDadosContatoDto);
             HttpContext.Response.StatusCode = (int)retorno.codRetorno;
             return retorno;
         }
