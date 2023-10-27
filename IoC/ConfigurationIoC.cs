@@ -1,15 +1,24 @@
 ﻿using Adapter.Interfaces;
-using Adapter.Map;
+using Adapter.Interfaces.Contato;
+using Adapter.Interfaces.Usuario;
+using Adapter.Map.Contato;
+using Adapter.Map.Usuario;
 using Adapter.Utils;
-using Application.Interface;
-using Application.Service;
-using Application.Validator;
+using Application.Interface.Contato;
+using Application.Interface.Usuario;
+using Application.Service.Contato;
+using Application.Service.Usuario;
+using Application.Validator.Contato;
+using Application.Validator.Usuario;
 using Autofac;
-using Core.Interface;
-using Core.Interface.Repository;
-using Core.Interface.Services;
-using Repository.Repositories;
-using Services.Services;
+using Core.Interface.Repository.Contato;
+using Core.Interface.Repository.Usuario;
+using Core.Interface.Services.Contato;
+using Core.Interface.Services.Usuario;
+using Repository.Repositories.Contato;
+using Repository.Repositories.Usuario;
+using Services.Services.Contato;
+using Services.Services.Usuario;
 
 namespace IoC
 {
