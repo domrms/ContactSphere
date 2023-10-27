@@ -11,7 +11,6 @@ namespace ContactSphere_API.Controllers
     public class UsuarioController : Controller
     {
         private readonly IApplicationUsuario _applicationUsuario;
-
         public UsuarioController(IApplicationUsuario applicationUsuario)
         {
             _applicationUsuario = applicationUsuario;

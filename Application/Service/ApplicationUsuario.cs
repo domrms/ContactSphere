@@ -29,7 +29,7 @@ namespace Application.Service
                 return _mapperUsuario.MapperToDTO(HttpStatusCode.UnprocessableEntity, mensagem);
             try
             {
-                UserToken userToken = _serviceUsuario.InserirUsuario(usuarioDto.Nome, usuarioDto.Email, usuarioDto.Senha, usuarioDto.Role);
+                UserToken userToken = _serviceUsuario.CadastrarUsuario(usuarioDto.Nome, usuarioDto.Email, usuarioDto.Senha, usuarioDto.Role);
                 if (userToken != null)
                     return _mapperUsuario.MapperToDTO(HttpStatusCode.OK, mensagem, userToken);
                 else

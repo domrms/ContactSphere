@@ -4,7 +4,7 @@ using ApplicationDTO.RequestDTO;
 
 namespace Application.Validator
 {
-    public class ValidacaoUsuario : IValidacaoUsuario
+    public class ValidacaoUsuario : ValidacaoBase, IValidacaoUsuario
     {
         private readonly IAuthenticateService _authenticateService;
 
@@ -14,12 +14,13 @@ namespace Application.Validator
         }
 
         private const string erroUsuarioExiste = "O USUÁRIO JÁ EXISTE!";
+        private const string erroEmailInvalido = "O EMAIL É INVÁLIDO!";
         private const string erroRoleInvalida = "A ROLE DEVE SER ADM OU USR!";
         private const string erroUsuarioNaoCadastrado = "USUÁRIO NÃO CADASTRADO!";
-        //TODO: VERIFICAR EMAIL
 
         public string ValidaDadosUsuario(RequestUsuarioDTO usuarioDTO)
         {
+            if (!ValidaEmail(usuarioDTO.Email)) return erroEmailInvalido;
             if (_authenticateService.UsuarioExiste(usuarioDTO.Email)) return erroUsuarioExiste;
             if (usuarioDTO.Role != "ADM" && usuarioDTO.Role != "USR") return erroRoleInvalida;
 

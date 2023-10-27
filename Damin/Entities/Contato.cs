@@ -17,8 +17,10 @@ namespace Domain.Entities
 
         [Required]
         public bool Status { get; set; }
+        [Required, MaxLength(100)]
+        public string Telefone { get; set; }
 
-        [Required, ForeignKey(nameof(Usuarios))]
+        [Required, ForeignKey(nameof(Usuario))]
         public long FkIdUsuario { get; set; }
     }
 }

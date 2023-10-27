@@ -5,7 +5,7 @@ using Domain.Models;
 
 namespace Services.Services
 {
-    public class ServiceUsuario : ServiceBase<Usuarios>, IServiceUsuario
+    public class ServiceUsuario : ServiceBase<Usuario>, IServiceUsuario
     {
         private readonly IRepositoryUsuario _repositoryUsuario;
 
@@ -14,7 +14,7 @@ namespace Services.Services
             _repositoryUsuario = repositoryUsuario;
         }
 
-        public UserToken InserirUsuario(string nome, string email, string senha, string role)
+        public UserToken CadastrarUsuario(string nome, string email, string senha, string role)
         {
             return _repositoryUsuario.Cadastrar(nome, email, senha, role);
         }
