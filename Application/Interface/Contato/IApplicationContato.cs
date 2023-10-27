@@ -9,8 +9,11 @@ namespace Application.Interface.Contato
         ResponseBaseDTO Cadastro(RequestDadosContatoDto request);
 
         ResponseContatoDTO RequestContatoPorId(RequestContatoIdDTO request);
+
         ResponseContatoDTO RequestListaContatosUsuario(RequestContatoIdDTO request);
+
         ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO);
+
         ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto);
     }
 }

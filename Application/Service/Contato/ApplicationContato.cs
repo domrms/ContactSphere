@@ -78,6 +78,7 @@ namespace Application.Service.Contato
                 return _mapperContato.MapperContatoPorIdToDTO(HttpStatusCode.InternalServerError, erro.Message);
             }
         }
+
         public ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO)
         {
             string mensagem = _validacaoContato.ValidaDadosPorId(requestContatoPorIdDTO);
@@ -96,6 +97,7 @@ namespace Application.Service.Contato
                 return _mapperContato.MapperToDTO(HttpStatusCode.InternalServerError, erro.Message);
             }
         }
+
         public ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto)
         {
             string mensagem = _validacaoContato.ValidaDadosUpdateContato(requestDadosContatoDto);

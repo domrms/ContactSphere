@@ -47,20 +47,20 @@ namespace ContactSphere_API.Controllers.Contato
             HttpContext.Response.StatusCode = (int)retorno.codRetorno;
             return retorno;
         }
+
         [AllowAnonymous]
         [HttpPost]
         [Route("/DesativarContato")]
-        //TODO: COLOCAR O JWT DO ADM
         public ResponseBaseDTO DesativarContato(RequestContatoIdDTO requestContatoPorIdDTO)
         {
             var retorno = _applicationContato.DesativarContato(requestContatoPorIdDTO);
             HttpContext.Response.StatusCode = (int)retorno.codRetorno;
             return retorno;
         }
+
         [AllowAnonymous]
         [HttpPost]
         [Route("/UpdateContato")]
-        //TODO: COLOCAR O JWT DO ADM
         public ResponseBaseDTO UpdateContato(RequestUpdateContatoDTO requestDadosContatoDto)
         {
             var retorno = _applicationContato.UpdateContato(requestDadosContatoDto);

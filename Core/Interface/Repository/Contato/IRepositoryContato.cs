@@ -5,8 +5,11 @@
         bool CadastrarContato(string nome, string email, string telefone, bool status, int fkIdUsuario);
 
         IQueryable<Domain.Entities.Contatos> BuscaContatoPorId(int id);
+
         IQueryable<Domain.Entities.Contatos> BuscaContatoPorIdUsuario(int id);
+
         bool AtualizaStatus(int id);
-        bool UpdateContato(int id,string nome, string email, string telefone);
+
+        bool UpdateContato(int id, string nome, string email, string telefone);
     }
 }

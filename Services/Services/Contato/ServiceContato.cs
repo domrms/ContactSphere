@@ -21,17 +21,20 @@ namespace Services.Services.Contato
         {
             return _repositoryContato.BuscaContatoPorId(id).ToList();
         }
+
         public List<Domain.Entities.Contatos> BuscaContatoPorIdUsuario(int id)
         {
             return _repositoryContato.BuscaContatoPorIdUsuario(id).ToList();
         }
+
         public bool AtualizaStatus(int id)
         {
             return _repositoryContato.AtualizaStatus(id);
         }
-        public bool UpdateContato(int id,string nome, string email, string telefone)
+
+        public bool UpdateContato(int id, string nome, string email, string telefone)
         {
-            return _repositoryContato.UpdateContato(id,nome, email, telefone);
+            return _repositoryContato.UpdateContato(id, nome, email, telefone);
         }
     }
 }

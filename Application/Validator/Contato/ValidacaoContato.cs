@@ -20,6 +20,7 @@ namespace Application.Validator.Contato
 
             return string.Empty;
         }
+
         public string ValidaDadosUpdateContato(RequestUpdateContatoDTO cadastrarContatoDto)
         {
             if (!ValidaNomeEmBranco(cadastrarContatoDto.Nome)) return erroNomeInvalido;

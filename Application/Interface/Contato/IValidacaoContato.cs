@@ -7,6 +7,7 @@ namespace Application.Interface.Contato
         public string ValidaDadosContato(RequestDadosContatoDto cadastrarContatoDto);
 
         public string ValidaDadosPorId(RequestContatoIdDTO requestContatoPorIdDTO);
+
         public string ValidaDadosUpdateContato(RequestUpdateContatoDTO cadastrarContatoDto);
     }
 }
